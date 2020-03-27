@@ -1,5 +1,11 @@
+#%%
 import json
 import os
+from pandas import DataFrame
+import pandas as pd
+
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns',None)
 
 path = "../dataset/"
 allFileList = os.listdir(path)
@@ -13,7 +19,6 @@ articles = []
 accounts = []
 
 for dataset in range(len(allFileList)):
-    print(dataset)
     with open(path + allFileList[dataset]) as file:
         result = json.load(file)
 
@@ -28,6 +33,13 @@ for dataset in range(len(allFileList)):
             accounts.append(comment["push_userid"])
 
         counter += 1
-print(len(accounts))
-account_duplicate = {i:accounts.count(i) for i in accounts}
-print(account_duplicate)
+
+Boxes = {'Account': accounts}
+
+df = DataFrame(Boxes, columns= ['Account'])
+
+dups_color = df.pivot_table(index=['Account'], aggfunc='size')
+
+print(dups_color)
+
+
