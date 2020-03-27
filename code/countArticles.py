@@ -59,13 +59,14 @@ accountWithEdge = []
 for row in range(len(relationship)):
     for column in range(row + 1, len(relationship)):
         if relationship[row][column] != 0:
-            if accounts[row] not in accountWithEdge:
+            if row not in accountWithEdge:
                 accountWithEdge.append(row)
-            if accounts[column] not in accountWithEdge:
+            if column not in accountWithEdge:
                 accountWithEdge.append(column)
 
-print(accountWithEdge)
-
+# print(accountWithEdge)
+# print(len(accountWithEdge))
+# print(len(accounts))
 
 # %%
 #print out the edge link
@@ -79,3 +80,7 @@ for account in accounts:
     _string = "{\"id\": \"" + account + "\", \"group\": 1},"
     print(_string)
 # %%
+#print out account just have links
+for accountIndex in accountWithEdge:
+    _string = "{\"id\": \"" + accounts[accountIndex] + "\", \"group\": 1},"
+    print(_string)
