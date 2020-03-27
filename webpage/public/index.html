@@ -16,7 +16,7 @@
 
     text {
         font-family: sans-serif;
-        font-size: 20px;
+        font-size: 2px;
     }
   
 	div.tooltip {
@@ -79,14 +79,14 @@ d3.json("graph.json", function(error, graph) {
   const simulation = d3.forceSimulation()
     .nodes(graph.nodes)
     .force('link', d3.forceLink().id(d => d.id))
-    .force('charge', d3.forceManyBody().strength(-500))
+    .force('charge', d3.forceManyBody().strength(-2))
     .force('center', d3.forceCenter(width / 2, height / 2))
     .on('tick', ticked);
 
   simulation.force('link')  
     .links(graph.links);
 
-  const R = 12;  
+  const R = 3;  
 
   let link = svg.append("g")
     .attr("class", "links")
@@ -225,8 +225,8 @@ function releasenode(d) {
 
     };
   }
-  var sequentialScale = d3.scaleOrdinal(d3.schemeCategory20c)
-  .domain(["主角", "桃花島", "天下五絕", "古墓派", "全真教", "丐幫", "大遼耶律氏", "蒙古", "絕情谷", "大里段氏", "大金完顏氏", "楊過友人", "其他人物"])
+  // var sequentialScale = d3.scaleOrdinal(d3.schemeCategory20c)
+  // .domain(["主角", "桃花島", "天下五絕", "古墓派", "全真教", "丐幫", "大遼耶律氏", "蒙古", "絕情谷", "大里段氏", "大金完顏氏", "楊過友人", "其他人物"])
 
 
 svg.append("g")
