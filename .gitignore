@@ -43,3 +43,4 @@ package-lock.json
 
 # json file
 *.json
+*.txt
